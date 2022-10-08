@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Body
-from models.models import Token
+from models.models import Token, TokensResponse
 import aiohttp
 
 url = "https://hackaton.bankingapi.ru/api/vtbid/v1/oauth2/token"
@@ -7,7 +7,7 @@ url = "https://hackaton.bankingapi.ru/api/vtbid/v1/oauth2/token"
 router = APIRouter()
 
 # TODO: поменять всратое название
-@router.post("/")
+@router.post("/", response_model=TokensResponse)
 async def supertoken(token: Token):
     payload={}
     headers = { 

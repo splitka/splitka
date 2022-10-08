@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from models.models import Token
+from models.models import Token, TransactionResponse
 import requests, json, base64, aiohttp
 
 router = APIRouter()
@@ -7,7 +7,8 @@ import requests
 
 url_payments = "https://hackaton.bankingapi.ru/api/rb/pmnt/acceptance/universal/hackathon/v1/payments/0"
 
-@router.post("/")
+# TODO: change puk and 2
+@router.post("/", response_model=TransactionResponse)
 async def payment_info(login: Token):
     # defolt headers expect Authorization
     payload={}
