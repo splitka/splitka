@@ -6,7 +6,7 @@ import aiohttp
 url_me = "https://hackaton.bankingapi.ru/api/vtbid/v1/oauth2/me"
 router = APIRouter()
 
-@router.git("/")
+@router.post("/")
 async def me(token: Token):
   # делаем запрос в /me
   access_token = token.access_token
@@ -19,7 +19,6 @@ async def me(token: Token):
     async with session.get(url_me, headers=headers, data=payload) as resp:
       response = await resp.json()
 
-  print(response)
   return response
 
 

@@ -5,9 +5,6 @@ class Login(BaseModel):
     password: str
 
 class Token(BaseModel):
-<<<<<<< HEAD
-    access_token: str
-=======
     access_token: str
 
 class MyAddress(BaseModel):
@@ -45,4 +42,3 @@ class BasicInfo(BaseModel):
   inn: int
   rfPassport: Passport
   mdmId: int
->>>>>>> 3c5837e01078cd010fba5620870289892baa1094
