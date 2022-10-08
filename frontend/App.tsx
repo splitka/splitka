@@ -1,22 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, StyleSheet, Text, View, Image } from 'react-native';
-
+import LogoWithText from './components/LogoWithText'
 
 export default function App() {
 
   return (
       <SafeAreaView style={styles.container}>
-      {/* <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View> */}
-      {/* <View> */}
-      <View>
-        <Image source={require('./img/chocolate.png')} 
-          style={styles.logo}
-        />
-        <Text>Splitka</Text>
-      </View>
+        <View style={styles.logo}>
+          <LogoWithText/>
+        </View>
+      {/* <Text>Example</Text> */}
       
       {/* </View> */}
       </SafeAreaView>
@@ -25,13 +18,10 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
   },
-  logo: { 
-    width: 40,
-    height: 40,
-    marginLeft: 24,
-    marginTop: 57,
+  logo: {
+    marginLeft: '5%',
+    marginTop: '6%',
   }
 });
