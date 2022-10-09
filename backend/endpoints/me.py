@@ -1,12 +1,14 @@
 from fastapi import APIRouter
-from models.models import Token, BasicInfo
+from models.models import Token, BasicInfo, KeyNotAuthorized
+from typing import Union
+
 import requests, json, base64
 import aiohttp
 
 url_me = "https://hackaton.bankingapi.ru/api/vtbid/v1/oauth2/me"
 router = APIRouter()
 
-@router.post("/", response_model=BasicInfo)
+@router.post("/", response_model=Union[BasicInfo, KeyNotAuthorized])
 async def me(token: Token):
   # делаем запрос в /me
   access_token = token.access_token
