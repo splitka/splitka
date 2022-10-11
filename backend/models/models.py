@@ -100,3 +100,14 @@ class TokensResponse(BaseModel):
     access_token: str
     refresh_token: str
     id_token: str
+
+class BaseUserInfo(BaseModel):
+    name: str
+    surname: str
+
+class UserInfo(BaseModel):
+    user_id: int
+    chat_id: int
+
+class ListUsersInfo(BaseModel):
+    list_users: list[BaseUserInfo]
