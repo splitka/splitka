@@ -1,30 +1,48 @@
-import { SafeAreaView, TouchableOpacity, AccessibilityActionEvent,  StyleSheet, Text, View, Image, Button } from 'react-native';
+import { SafeAreaView, Pressable, TouchableOpacity, AccessibilityActionEvent,  StyleSheet, Text, View, Image, useWindowDimensions } from 'react-native';
 import LogoWithText from '../components/LogoWithText'
+import {BottomModal} from '../components/BottomModal'
 import { useFonts } from "expo-font";
 import { Dimensions } from 'react-native';
-import { NavigationProp } from "@react-navigation/native";
+import { NavigationProp, RouteProp } from "@react-navigation/native";
+import { BottomSheet } from 'react-native-btr';
+import { useRef, useState, useCallback, useMemo } from "react";
+
 
 interface RouterProps {
-  navigation: NavigationProp<any, any>;
+  route: RouteProp<any, any>,
+  navigation: NavigationProp<any, any>,
 }
-export default function SplitkaLogin({ navigation }: RouterProps) {
+
+export default function SplitkaLogin({ route, navigation }: RouterProps) {
+  const [bottomVisible, setBottomVisible] = useState(false);
+  const [typeOfModal, setTypeOfModal] = useState('VK_A');
+  const handleModalChange = (val: string) => {
+    setTypeOfModal(val);
+  }
+
+  const toggleBottomNavigationView = () => {
+    //Toggling the visibility state of the bottom sheet
+    setBottomVisible(!bottomVisible);
+  };
+
   let [fontsLoaded] = useFonts({
     'Nunito': require('../assets/fonts/Nunito.ttf'),
     'Nunito-Bold': require('../assets/fonts/Nunito-Bold.ttf')
   });
 
+  
   if (!fontsLoaded) {
       return <Text>Loading</Text>
   }
   const dimensions = Dimensions.get('window');
   const imageHeight = dimensions.height * 0.3
 
+
   const CenterImageAndText = () => {
     return(
       <View style={{alignItems: 'center', top: '15%'}}>
-          <Image source={require('../img/main_menu_people.png')} 
-                      style={{height: imageHeight, aspectRatio: 1}} 
-          />
+          <Image source={require('../img/main_menu_people.png')}
+                      style={{height: imageHeight, aspectRatio: 1}}  />
         <View style={{maxWidth: '70%'}}>
           <Text style={styles.centerText}>Делить платежи с друзьями стало удобнее! </Text>
         </View>
@@ -45,29 +63,44 @@ export default function SplitkaLogin({ navigation }: RouterProps) {
             </TouchableOpacity>
           </View>
         <View style={{alignItems: 'center'}}>
-          <TouchableOpacity style={styles.enterVKIDButton} onPress={() => alert('did click')} >
-              <Text style={styles.enterVKIDText}>Вход VK ID</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.enterVKIDButton} onPress={() => {setTypeOfModal('VK_A'); setBottomVisible(!bottomVisible);}} >
+            <Text style={styles.enterVKIDText}>Вход VK ID</Text>
+          </TouchableOpacity>
         </View>
       </View>
     )
   }
 
+
   return (
+      <>
       <SafeAreaView style={styles.container}>
         <View style={styles.logo}>
           <LogoWithText/>
         </View>
+          
         <CenterImageAndText />
-        <View style={{bottom: '-30%'}}>
+        <View style={{bottom: '-25%'}}>
           <BottomElements />
         </View>
       </SafeAreaView>
+      <BottomSheet
+          visible={bottomVisible}
+          onBackButtonPress={toggleBottomNavigationView}
+          onBackdropPress={toggleBottomNavigationView}
+        >
+          <BottomModal 
+            type={typeOfModal}
+            handleModalChange={handleModalChange}
+          />
+        </BottomSheet>
+      </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
   },
   logo: {
     marginLeft: '5%',
@@ -106,5 +139,50 @@ const styles = StyleSheet.create({
     color: '#5662C5',
     fontFamily: 'Nunito-Bold',
     fontSize: 18
+  },
+  defaultButton: {
+    width: '87%',
+    maxWidth: 600,
+    aspectRatio: 7,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  defaultButtonText: {
+    fontFamily: 'Nunito-Bold',
+    fontSize: 18
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  row: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginVertical: 10,
+  },
+  title: {
+    fontWeight: "900",
+    letterSpacing: 0.5,
+    fontSize: 16,
+  },
+  subtitle: {
+    color: "#101318",
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+  description: {
+    color: "#56636F",
+    fontSize: 13,
+    fontWeight: "normal",
+    width: "100%",
+  },
+  bottomNavigationView: {
+    backgroundColor: '#fff',
+    width: '100%',
+    height: '40%',
+    alignItems: 'center',
   }
 });
