@@ -1,13 +1,14 @@
 from fastapi import APIRouter, Body
-from models.models import Token, TokensResponse
+from models.models import Token, TokensResponse, KeyNotAuthorized
 import aiohttp
+from typing import Union
 
 url = "https://hackaton.bankingapi.ru/api/vtbid/v1/oauth2/token"
 
 router = APIRouter()
 
 # TODO: поменять всратое название
-@router.post("/", response_model=TokensResponse)
+@router.post("/", response_model=Union[TokensResponse, KeyNotAuthorized])
 async def supertoken(token: Token):
     payload={}
     headers = { 
