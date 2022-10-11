@@ -1,6 +1,6 @@
 # Splitka
 
-Application for split payments
+``` ITS OHYENNOE PRILOCHENIE ```
 
 ## Getting started
 
