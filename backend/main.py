@@ -12,7 +12,7 @@ app.include_router(get_list_members.router, prefix="/get_tg_users", tags=["Get l
 
 if __name__ == "__main__":
     # TODO: delete reload
-    uvicorn.run("main:app", reload=True)
+    uvicorn.run("main:app", port=82, host="splitka-backend.transcendent.app", reload=True)
 
 
     
