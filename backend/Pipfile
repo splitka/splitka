@@ -7,8 +7,11 @@ name = "pypi"
 fastapi = "*"
 uvicorn = "*"
 sqlalchemy = "*"
-databases = {extras = ["sqlite3"], version = "*"}
 requests = "*"
+aiohttp = "*"
+databases = {extras = ["sqlite3"], version = "*"}
+asyncpg = "*"
+aiosqlite = "*"
 
 [dev-packages]
 
