@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import Update from './Update';
 import Payments from './Payments';
+import UserSplitSum from './UserSplitSum';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ export default function Splitka() {
       }}>
         <Stack.Screen name="Update" component={Update} />
         <Stack.Screen name="Payments" component={Payments} />
+        <Stack.Screen name="UserSplitSum" component={UserSplitSum} />
       </Stack.Navigator>
     );
 }
@@ -29,6 +31,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     flex: 2,
+    marginTop:'4%',
     justifyContent: 'center',
     alignItems: 'flex-start',
     marginHorizontal: '4%'

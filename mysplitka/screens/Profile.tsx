@@ -22,13 +22,14 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
     },
     logo: {
-      flex: 2,
+      flex: 1.5,
+      marginTop:'6%',
       justifyContent: 'center',
       alignItems: 'flex-start',
       marginHorizontal: '4%'
     },
     name: {
-      flex: 7,
+      flex: 8,
       justifyContent: 'center',
       fontFamily: 'Nunito-Bold'
     },
