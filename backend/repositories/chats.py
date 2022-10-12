@@ -6,21 +6,21 @@ from .base import BaseRepository
 from fastapi import Path
 import json
 
-class UserRepository(BaseRepository):
+class ChatRepository(BaseRepository):
     async def create(self, u: UserInfo):
         values = {**u.dict()}
-        values.pop("chat_id", None)
-        values.pop("chat_name", None)
-        query = users.insert().values(**values)
+        values.pop("username", None)
+        values.pop("name", None)
+        values.pop("surname", None)
+        query = chats.insert().values(**values)
         return await self.database.execute(query) 
     
-    async def get_all(self, user_id: int):
-        query = users.select().filter_by(user_id=user_id)
+    async def get_all(self, chat_id: int = Path(lt=0)):
+        query = chats.select().filter_by(chat_id=chat_id)
         return await self.database.fetch_all(query=query)
-
+        
     async def update(self):
         pass 
-
 
     
     

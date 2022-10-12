@@ -116,6 +116,7 @@ class UserInfo(BaseUserInfo):
     user_id: int
     chat_id: Optional[int]
     chat_name: Optional[str]
+    
 
 class ListUsersInfo(BaseModel):
     list_users: List[Union[BaseUserInfo, BaseUserInfo2]]
