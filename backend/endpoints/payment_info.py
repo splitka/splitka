@@ -29,7 +29,6 @@ async def payment_info(login: Token):
         async with session.get(url_payments, headers=headers, data=payload, skip_auto_headers=['Content-Type']) as resp:
             response = await resp.json()
     
-    print(response, flush=True)
     return response
 
 

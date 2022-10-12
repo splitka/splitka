@@ -1,5 +1,6 @@
 from re import L
 from pydantic import BaseModel
+from typing import List
 
 class Login(BaseModel):
     username: str
@@ -75,20 +76,20 @@ class InfoStatus(BaseModel):
     description: str
 
 class InfoProvider(BaseModel):
-    categoryIds: list[str]
+    categoryIds: List[str]
     id: int
     name: str
-    subTypes: list[str]
+    subTypes: List[str]
     type: str
 
 class TransactionResponse(BaseModel):
     actions: Actions
-    clientProduct: list[ProductType]
+    clientProduct: List[ProductType]
     commissionSum: InfoSum
     createdAt: str
     description: str
     documentId: int
-    fields: list[InfoFiels]
+    fields: List[InfoFiels]
     id: str
     paySum: InfoSum
     providerService: InfoProvider
@@ -110,4 +111,7 @@ class UserInfo(BaseModel):
     chat_id: int
 
 class ListUsersInfo(BaseModel):
-    list_users: list[BaseUserInfo]
+    list_users: List[BaseUserInfo]
+
+class KeyNotAuthorized(BaseModel):
+    error: str
