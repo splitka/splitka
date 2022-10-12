@@ -17,6 +17,9 @@ export default function VTBLogin({ navigation }: RouterProps) {
     const toggleBottomNavigationView = () => {
         //Toggling the visibility state of the bottom sheet
         setBottomVisible(!bottomVisible);
+
+        setBottomVisible(!bottomVisible);
+        if (bottomVisible && typeOfModal == "SUCCESS") { navigation.navigate("Update") }
     };
 
     const handleModalChange = (val: string) => {
