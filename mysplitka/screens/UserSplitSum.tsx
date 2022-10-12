@@ -60,7 +60,7 @@ const Item = ({item, onPress}) => {
     };
     return (
     <View style={styles.item}>
-        <Image source={RandomImage()} style={[styles.image, {alignItems: 'flex-start'}]}/>
+        <Image source={RandomImage()} style={styles.image}/>
         <Text style={styles.title}>{item.title}</Text>
         <TextInput 
             style={styles.textInput}
@@ -70,9 +70,9 @@ const Item = ({item, onPress}) => {
             maxLength={5}
             selectTextOnFocus
         />
-        <Text style={{fontFamily:'Nunito-Bold', marginTop:'2.5%'}}>₽</Text>
-        <TouchableOpacity onPress={onPress} style={{alignItems: 'flex-end'}}>
-            <Image source={require('../img/crestik.png')} style={styles.image}/>
+        <Text style={{fontFamily:'Nunito-Bold'}}>₽</Text>
+        <TouchableOpacity onPress={onPress} style={{flex: 1, justifyContent: 'center'}}>
+            <Image source={require('../img/crestik.png')} style={{width:25, height:25}}/>
         </TouchableOpacity>
     </View>
     )
@@ -131,42 +131,36 @@ const styles = StyleSheet.create({
     flex: 1, 
     flexDirection: 'row',
     paddingVertical: 20,
+    paddingRight: 10,
     marginVertical: 3,
+    alignItems: 'center'
   },
   image: {
-    flex: 1,
-    width: 30, 
-    height: 32,
+    flex: 1.7,
+    height: 40,
+    maxWidth: 40,
     justifyContent: 'center',
     marginRight: '2%',
-    alignItems: 'flex-start',
-    borderRadius: 12 
+    borderRadius: 20 
   },
   title: {
-    flex: 6, 
-    alignItems: 'flex-start',
-    fontFamily: 'Nunito-Bold',
-    fontSize: 16,
-    marginTop: '1.5%',
-  },
-  sum: {
-    flex: 1, 
-    alignItems: 'flex-end',
+    flex: 8, 
+    justifyContent: 'flex-start',
     fontFamily: 'Nunito-Bold',
     fontSize: 16,
   },
   textInput: {
+    flex:2,
     height: 25,
-    width: 55,
+    maxWidth: 80,
     marginHorizontal: '1%',
-    marginTop: '1.5%',
     borderWidth: 1,
     color: '#000',
     borderRadius: 8,
     cursorColor:'#000',
     textAlign:'right',
-    paddingHorizontal:'2%',
     fontSize: 14,
     fontFamily: 'Nunito',
+    paddingHorizontal:'1%'
   }
 });

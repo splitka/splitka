@@ -41,7 +41,7 @@ const Item = ({item, onPress}) => {
           <Text style={styles.title}>{item.title}</Text>
           <Text style={styles.sum}>{item.totalSum} ₽</Text>
           <TouchableOpacity onPress={onPress} style={{alignItems: 'flex-end'}}>
-              <Image source={require('../img/chocolate.png')} style={styles.image}/>
+              <Image source={require('../img/chocolate.png')} style={{width:30, height:30}}/>
           </TouchableOpacity>
       </View>
     )
@@ -88,26 +88,27 @@ const styles = StyleSheet.create({
     flex: 1, 
     flexDirection: 'row',
     paddingVertical: 20,
-    marginVertical: 4,
+    paddingHorizontal: 5,
+    marginVertical: 3,
+    alignItems: 'center'
   },
   image: {
-    flex: 1,
-    width: 30, 
-    height: 32,
+    flex: 1.7,
+    height: 40,
+    maxWidth:40,
     justifyContent: 'center',
     marginRight: '2%',
-    alignItems: 'flex-start',
-    borderRadius: 12
+    borderRadius: 20 
   },
   title: {
-    flex: 6, 
+    flex: 7, 
     alignItems: 'flex-start',
     fontFamily: 'Nunito',
     fontSize: 16,
   },
   sum: {
-    flex: 1.7, 
-    alignItems: 'flex-end',
+    flex: 3, 
+    justifyContent: 'flex-end',
     fontFamily: 'Nunito-Bold',
     fontSize: 16,
     textAlign: 'right',
