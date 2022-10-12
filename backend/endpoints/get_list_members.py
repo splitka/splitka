@@ -13,6 +13,7 @@ async def get_list_members(chat_id: int = Path(lt=0)):
     t = {
         'list_users': [
             {'name': 'bulat', 'surname': "efremov"},
+            {'username': 'bulat'},
             {'name': 'bulat', 'surname': "efremov"},
             {'name': 'bulat', 'surname': "efremov"}
         ]

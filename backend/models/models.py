@@ -1,6 +1,6 @@
 from re import L
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional, Union
 
 class Login(BaseModel):
     username: str
@@ -103,15 +103,22 @@ class TokensResponse(BaseModel):
     id_token: str
 
 class BaseUserInfo(BaseModel):
-    name: str
-    surname: str
+    username: str
+    name: Optional[str]
+    surname: Optional[str]
 
-class UserInfo(BaseModel):
+class BaseUserInfo2(BaseModel):
+    username: Optional[str]
+    name: str
+    surname: Optional[str]
+    
+
+class UserInfo(BaseUserInfo):
     user_id: int
     chat_id: int
 
 class ListUsersInfo(BaseModel):
-    list_users: List[BaseUserInfo]
+    list_users: List[Union[BaseUserInfo, BaseUserInfo2]]
 
 class KeyNotAuthorized(BaseModel):
     error: str
