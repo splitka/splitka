@@ -7,49 +7,45 @@ interface RouterProps {
     navigation: NavigationProp<any, any>;
 }
 
+
 const DATA = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'Му-му',
+      title: 'Кофейня "Шоколадница"',
       totalSum: '600',
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Oblomof',
-      totalSum: '600',
+      title: 'Ресторан Torro Crill',
+      totalSum: '1300',
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Теремок',
-      totalSum: '600',
+      title: 'Ресторан Torro Crill',
+      totalSum: '500',
     },
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28bq',
-        title: 'Му-му',
-        totalSum: '600',
-      },
-      {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f6q',
-        title: 'Oblomof',
-        totalSum: '600',
-      },
-      {
-        id: '58694a0f-3da1-471f-bd96-145571e29d7q',
-        title: 'Теремок',
-        totalSum: '600',
+        title: 'Кофейня "Шоколадница"',
+        totalSum: '2000',
       },
 ];
 
-const Item = ({item, onPress}) => (
-    <View style={styles.item}>
-        <Image source={require('../img/logopay.jpg')} style={[styles.image, {alignItems: 'flex-start'}]}/>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.sum}>{item.totalSum}</Text>
-        <TouchableOpacity onPress={onPress} style={{alignItems: 'flex-end'}}>
-            <Image source={require('../img/chocolate.png')} style={styles.image}/>
-        </TouchableOpacity>
-    </View>
-  );
+const Item = ({item, onPress}) => {
+    function RandomImage(){
+      return Math.random() < 0.5?require('../img/imagepayments/Coffee.png'):require('../img/imagepayments/Torro.png');
+    };
+    return (
+      <View style={styles.item}>
+          <Image source={RandomImage()} style={[styles.image, {alignItems: 'flex-start'}]}/>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.sum}>{item.totalSum} ₽</Text>
+          <TouchableOpacity onPress={onPress} style={{alignItems: 'flex-end'}}>
+              <Image source={require('../img/chocolate.png')} style={styles.image}/>
+          </TouchableOpacity>
+      </View>
+    )
+  };
 
 export default function Payments({ navigation }: RouterProps) {
     return (
@@ -61,7 +57,8 @@ export default function Payments({ navigation }: RouterProps) {
             <Text style={{fontFamily: 'Nunito-Bold', fontSize: 32}}>Платежи</Text>
             <FlatList
                 data={DATA}
-                renderItem={({item}) => (<Item item={item} onPress={()=>{}} />)}
+                renderItem={({item}) => (<Item item={item} onPress={()=>{navigation.navigate("UserSplitSum", 
+                                                                                            {sum: parseInt(item.totalSum, 10)})}} />)}
                 keyExtractor={(item) => item.id}
             />
         </View>
@@ -77,36 +74,43 @@ const styles = StyleSheet.create({
     marginHorizontal: '4%'
   },
   logo: {
-    flex: 2,
+    flex: 1.5,
+    marginTop:'6%',
     justifyContent: 'center',
     alignItems: 'flex-start',
   },
   payments: {
-    flex: 7,
+    flex: 8,
     justifyContent: 'center',
     fontFamily: 'Nunito-Bold'
   },
   item: {
     flex: 1, 
     flexDirection: 'row',
-    padding: 20,
-    marginVertical: 8,
+    paddingVertical: 20,
+    marginVertical: 4,
   },
   image: {
     flex: 1,
-    width: 32, 
-    height: 30, 
+    width: 30, 
+    height: 32,
+    justifyContent: 'center',
+    marginRight: '2%',
+    alignItems: 'flex-start',
+    borderRadius: 12
   },
   title: {
-    flex: 5, 
+    flex: 6, 
     alignItems: 'flex-start',
     fontFamily: 'Nunito',
     fontSize: 16,
   },
   sum: {
-    flex: 1, 
+    flex: 1.7, 
     alignItems: 'flex-end',
     fontFamily: 'Nunito-Bold',
     fontSize: 16,
+    textAlign: 'right',
+    marginHorizontal: '2%'
   }
 });

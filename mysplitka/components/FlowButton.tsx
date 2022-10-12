@@ -11,6 +11,7 @@ const FlowButton: React.FC<Props> = ({title, onPress}) => {
         <TouchableOpacity
             activeOpacity={0.8}
             onPress={onPress}
+            style={{marginVertical:'3%'}}
         >
             <View style={styles.appButtonContainer}>
                 <Text style={styles.appButtonText}>{title}</Text>

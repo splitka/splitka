@@ -29,12 +29,13 @@ const styles = StyleSheet.create({
     marginHorizontal: '4%'
   },
   logo: {
-    flex: 2,
+    flex: 1.5,
+    marginTop:'6%',
     justifyContent: 'center',
     alignItems: 'flex-start',
   },
   button: {
-    flex: 7,
+    flex: 8,
     justifyContent: 'center',
     fontFamily: 'Nunito-Bold'
   },

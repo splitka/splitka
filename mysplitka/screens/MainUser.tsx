@@ -20,7 +20,7 @@ function MainUser() {
               return <Image source={require('../img/profile1.png')} style={styles.image}/>
           },
           tabBarLabelStyle: { paddingBottom: 10, fontSize: 12, fontFamily: 'Nunito', color: '#FFF' },
-          tabBarStyle: { padding: 10, height: 65, backgroundColor: '#1C0F2D'}
+          tabBarStyle: { padding: 10, height: 63, backgroundColor: '#1C0F2D'}
         })}
         >
         <Tab.Screen name={"Splitka"} component={Splitka}/>
@@ -31,8 +31,8 @@ function MainUser() {
 
 const styles = StyleSheet.create({
     image: {
-      width: 32, 
-      height: 30, 
+      width: 30, 
+      height: 28, 
       marginTop:'3%', 
       marginBottom: '4%', 
       tintColor:'#fff',
