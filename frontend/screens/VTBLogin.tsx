@@ -19,21 +19,11 @@ export default function VTBLogin({ navigation }: RouterProps) {
         setBottomVisible(!bottomVisible);
 
         setBottomVisible(!bottomVisible);
-        if (bottomVisible && typeOfModal == "SUCCESS") { navigation.navigate("Update") }
+        if (bottomVisible && typeOfModal == "SUCCESS") { navigation.navigate("MainUser") }
     };
 
     const handleModalChange = (val: string) => {
         setTypeOfModal(val);
-    }
-
-    let [fontsLoaded] = useFonts({
-        'Nunito': require('../assets/fonts/Nunito.ttf'),
-        'Nunito-Bold': require('../assets/fonts/Nunito-Bold.ttf')
-      });
-    
-      
-    if (!fontsLoaded) {
-        return <Text>Loading</Text>
     }
 
     const dimensions = Dimensions.get('window');
@@ -94,7 +84,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderWidth: 1,
         padding: 10,
-        background: '#FFFFFF',
+        backgroundColor: '#FFFFFF',
         borderColor: '#E2E4E9',
         borderRadius: 10,
         fontFamily: 'Nunito',

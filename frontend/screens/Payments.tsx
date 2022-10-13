@@ -4,7 +4,8 @@ import LogoWithText from '../components/LogoWithText'
 import React from 'react';
 
 interface RouterProps {
-    navigation: NavigationProp<any, any>;
+  route: any;
+  navigation: NavigationProp<any, any>;
 }
 
 
@@ -31,7 +32,7 @@ const DATA = [
       },
 ];
 
-const Item = ({item, onPress}) => {
+const Item = ({item, onPress}: any) => {
     function RandomImage(){
       return Math.random() < 0.5?require('../img/imagepayments/Coffee.png'):require('../img/imagepayments/Torro.png');
     };
@@ -47,7 +48,7 @@ const Item = ({item, onPress}) => {
     )
   };
 
-export default function Payments({ navigation }: RouterProps) {
+export default function Payments({route, navigation }: RouterProps) {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.logo}>

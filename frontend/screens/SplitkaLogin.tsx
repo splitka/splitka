@@ -1,11 +1,10 @@
-import { SafeAreaView, Pressable, TouchableOpacity, AccessibilityActionEvent,  StyleSheet, Text, View, Image, useWindowDimensions } from 'react-native';
+import { SafeAreaView, TouchableOpacity, StyleSheet, Text, View, Image, } from 'react-native';
 import LogoWithText from '../components/LogoWithText'
 import {BottomModal} from '../components/BottomModal'
-import { useFonts } from "expo-font";
 import { Dimensions } from 'react-native';
 import { NavigationProp, RouteProp } from "@react-navigation/native";
 import { BottomSheet } from 'react-native-btr';
-import { useRef, useState, useCallback, useMemo } from "react";
+import { useState} from "react";
 
 
 interface RouterProps {
@@ -26,15 +25,6 @@ export default function SplitkaLogin({ route, navigation }: RouterProps) {
     if (bottomVisible && typeOfModal == "SUCCESS") { navigation.navigate("Update") }
   };
 
-  let [fontsLoaded] = useFonts({
-    'Nunito': require('../assets/fonts/Nunito.ttf'),
-    'Nunito-Bold': require('../assets/fonts/Nunito-Bold.ttf')
-  });
-
-  
-  if (!fontsLoaded) {
-      return <Text>Loading</Text>
-  }
   const dimensions = Dimensions.get('window');
   const imageHeight = dimensions.height * 0.3
 
