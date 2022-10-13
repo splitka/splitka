@@ -6,12 +6,19 @@ from repositories.chats import ChatRepository
 
 router = APIRouter()
 
+@router.get("/chats_id/{users_id}")
+async def read_chats_id(
+    chats: ChatRepository = Depends(get_chat_repository),
+    user_id: int = 0):
+
+    return await chats.get_all_chats_id(user_id)
+
 @router.get("/users_id/{chat_id}")
 async def read_users_id(
     chats: ChatRepository = Depends(get_chat_repository),
     chat_id: int = Path(lt=0)):
 
-    return await chats.get_all(chat_id)
+    return await chats.get_all_users_id(chat_id)
 
 @router.get("/info_users/{user_id}")
 async def read_info_users(
