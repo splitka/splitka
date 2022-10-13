@@ -13,31 +13,32 @@ const DATA = [
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'Кофейня "Шоколадница"',
       totalSum: '600',
+      img: require('../img/imagepayments/Coffee.png')
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
       title: 'Ресторан Torro Crill',
       totalSum: '1300',
+      img: require('../img/imagepayments/Torro.png')
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
       title: 'Ресторан Torro Crill',
       totalSum: '500',
+      img: require('../img/imagepayments/Torro.png')
     },
     {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28bq',
-        title: 'Кофейня "Шоколадница"',
-        totalSum: '2000',
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28bq',
+      title: 'Кофейня "Шоколадница"',
+      totalSum: '2000',
+      img: require('../img/imagepayments/Coffee.png')
       },
 ];
 
 const Item = ({item, onPress}) => {
-    function RandomImage(){
-      return Math.random() < 0.5?require('../img/imagepayments/Coffee.png'):require('../img/imagepayments/Torro.png');
-    };
     return (
       <View style={styles.item}>
-          <Image source={RandomImage()} style={[styles.image, {alignItems: 'flex-start'}]}/>
+          <Image source={item.img} style={[styles.image, {alignItems: 'flex-start'}]}/>
           <Text style={styles.title}>{item.title}</Text>
           <Text style={styles.sum}>{item.totalSum} ₽</Text>
           <TouchableOpacity onPress={onPress} style={{alignItems: 'flex-end'}}>

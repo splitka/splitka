@@ -13,7 +13,7 @@ function App() {
   return (
     // <SplitkaLogin />
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SplitkaLogin" 
+      <Stack.Navigator initialRouteName="Payments" 
       screenOptions={{
         headerShown: false,
         contentStyle: {
