@@ -101,6 +101,14 @@ class TransactionResponse(BaseModel):
     status: InfoStatus
     totalSum: InfoSum
 
+class BaseTransInfo(BaseModel):
+    id: str
+    title: str
+    totalSum: str
+
+class TransactionResponseFront(BaseModel):
+    products: List[BaseTransInfo]
+    
 class TokensResponse(BaseModel):
     scope: str
     access_token: str
