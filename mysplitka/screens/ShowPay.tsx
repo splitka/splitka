@@ -2,7 +2,7 @@ import { SafeAreaView, TouchableOpacity, StyleSheet, Text, View, Image} from 're
 import LogoWithText from '../components/LogoWithText'
 import { Dimensions } from 'react-native';
 import { NavigationProp } from "@react-navigation/native";
-import React from 'react';
+import * as React from 'react';
 
 interface RouterProps {
   navigation: NavigationProp<any, any>;
@@ -27,20 +27,7 @@ export default function ShowPay({ navigation }: RouterProps) {
   const BottomElements = () => {
     return (
       <View>
-        <View style={{paddingLeft: "6.5%"}}>
-          <Text style={{fontFamily: 'Nunito-Bold', fontSize: 28}}>Войдите через OpenID</Text>
-          <Text style={{fontFamily: 'Nunito', paddingBottom: 20, fontSize: 16}}>и начните работу с Splitka</Text>
-        </View>
-        <View style={{paddingBottom: '5%', alignItems: 'center'}}>
-          <TouchableOpacity style={styles.enterVTBButton} onPress={() => navigation.navigate('VTBLogin')} >
-              <Text style={styles.enterVTBButtonText}>Вход VTB Open ID</Text>
-            </TouchableOpacity>
-          </View>
-        <View style={{alignItems: 'center'}}>
-          <TouchableOpacity style={styles.enterVKIDButton} onPress={() => alert('did click')} >
-              <Text style={styles.enterVKIDText}>Вход VK ID</Text>
-            </TouchableOpacity>
-        </View>
+        
       </View>
     )
   }
@@ -60,10 +47,16 @@ export default function ShowPay({ navigation }: RouterProps) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#fff',
+    marginHorizontal: '4%'
   },
   logo: {
-    marginLeft: '5%',
-    marginTop: '6%',
+    flex: 1.5,
+    marginTop:'6%',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
   centerText: {
     paddingTop: 10,
