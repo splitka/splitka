@@ -4,8 +4,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text } from 'react-native';
 import { useFonts } from 'expo-font';
 import ShowPay from './screens/ShowPay.tsx'
+import { TelegramWebApp } from 'react-telegram-webapp';
 
 const Stack = createNativeStackNavigator();
+
+let tg = window.Telegram.WebApp;
 
 function App() {
   let [fontsLoaded] = useFonts({
@@ -15,7 +18,8 @@ function App() {
 
   if (!fontsLoaded) {
       return <Text>Loading</Text>
-  }     
+  };
+  tg.sendData("Basa");
   return (
     // <SplitkaLogin />
     <NavigationContainer>

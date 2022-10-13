@@ -1,19 +1,20 @@
-import React from "react";
-import {StyleSheet, TouchableOpacity, Text, GestureResponderEvent, View } from "react-native";
+import * as React from 'react';
+import {StyleSheet, TouchableOpacity, Text, GestureResponderEvent, View, StyleProp } from "react-native";
 
 export type Props = {
     title: string;
     onPress: ((event: GestureResponderEvent) => void);
+    stylebutton?: {};
   };
 
-const FlowButton: React.FC<Props> = ({title, onPress}) => {
+const FlowButton: React.FC<Props> = ({title, onPress, stylebutton}) => {
     return (
         <TouchableOpacity
             activeOpacity={0.8}
             onPress={onPress}
             style={{marginVertical:'3%'}}
         >
-            <View style={styles.appButtonContainer}>
+            <View style={[styles.appButtonContainer, stylebutton]}>
                 <Text style={styles.appButtonText}>{title}</Text>
             </View>
         </TouchableOpacity>
@@ -26,8 +27,7 @@ appButtonContainer: {
     alignItems: 'center',
     backgroundColor: "#1A2F9E",
     borderRadius: 12,
-    marginHorizontal: 25,
-    padding: 10
+    padding: 15
 },
 appButtonText: {
     fontSize: 20,

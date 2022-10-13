@@ -1,24 +1,41 @@
-import { SafeAreaView, TouchableOpacity, StyleSheet, Text, View, Image} from 'react-native';
+import { SafeAreaView, TouchableOpacity, StyleSheet, Text, View, Image, GestureResponderEvent} from 'react-native';
 import LogoWithText from '../components/LogoWithText'
 import { Dimensions } from 'react-native';
 import { NavigationProp } from "@react-navigation/native";
 import * as React from 'react';
+import FlowButton from '../components/FlowButton';
 
 interface RouterProps {
   navigation: NavigationProp<any, any>;
 }
+
+const user = {
+  name: 'Артемий',
+  product: 'Кофейня "Шоколадница"',
+  totalSum:'600',
+  splitSum: '120'
+}
+
 export default function ShowPay({ navigation }: RouterProps) {
   const dimensions = Dimensions.get('window');
-  const imageHeight = dimensions.height * 0.3
+  const imageHeight = dimensions.height * 0.15
 
   const CenterImageAndText = () => {
     return(
-      <View style={{alignItems: 'center', top: '15%'}}>
-          <Image source={require('../img/main_menu_people.png')} 
-                      style={{height: imageHeight, aspectRatio: 1}} 
-          />
-        <View style={{maxWidth: '70%'}}>
-          <Text style={styles.centerText}>Делить платежи с друзьями стало удобнее! </Text>
+      <View style={{flex: 5, alignItems: 'center'}}>
+        <Image source={require('../img/art.png')} 
+                    style={{height: imageHeight, aspectRatio: 1, borderRadius: 100}} 
+        />
+        <Text style={[styles.centerText, {fontSize:48}]}>{user.splitSum} ₽</Text>
+        <View>
+          <Text style={styles.centerText}>По транзакции:</Text>
+        </View>
+        <View style={{alignItems:'center'}}>
+          <View style={{flexDirection:'row', alignItems:'center', marginHorizontal:'4%'}}>
+            <Image source={require('../img/imagepayments/Coffee.png')} style={styles.image}/>
+            <Text style={styles.title}>{user.product}</Text>
+            <Text style={[styles.title, {flex: 1, fontFamily:'Nunito-Bold', textAlign:'right'}]}>{user.totalSum} ₽</Text>
+          </View>
         </View>
       </View>
     )
@@ -26,8 +43,13 @@ export default function ShowPay({ navigation }: RouterProps) {
 
   const BottomElements = () => {
     return (
-      <View>
-        
+      <View style={{flexDirection:'column'}}>
+        <View style={{flexDirection:'row', alignItems:'center'}}>
+          <Image source={require('../img/logoSBP.jpg')} style={{width:40, height:40}} />
+          <Text style={[styles.title, {fontSize:13, textAlign:'center'}]}>Перевод через систему быстрых платежей</Text>
+        </View>
+        <FlowButton title={'Продолжить'} onPress={()=>{}} stylebutton={{backgroundColor:'#000'}}/>
+        <FlowButton title={'Оплатить через VTB OpenID'} onPress={()=>{}}/>
       </View>
     )
   }
@@ -37,8 +59,9 @@ export default function ShowPay({ navigation }: RouterProps) {
         <View style={styles.logo}>
           <LogoWithText/>
         </View>
-        <CenterImageAndText />
-        <View style={{bottom: '-30%'}}>
+        <View style={{flex: 7, flexDirection: 'column'}}>
+          <Text style={[styles.centerText, {flex: 1, fontSize: 20}]}>{user.name} запросил у вас перевод</Text>
+          <CenterImageAndText />
           <BottomElements />
         </View>
       </SafeAreaView>
@@ -60,11 +83,10 @@ const styles = StyleSheet.create({
   },
   centerText: {
     paddingTop: 10,
-    /* Base Text (16, 20) */
-    fontFamily: 'Nunito',
+    fontFamily: 'Nunito-Bold',
     fontSize: 18,
     textAlign: 'center',
-    color: '#586179'
+    color: '#0A173D'
   },
   enterVTBButton: {
     backgroundColor: '#1A2F9E',
@@ -91,5 +113,21 @@ const styles = StyleSheet.create({
     color: '#5662C5',
     fontFamily: 'Nunito-Bold',
     fontSize: 18
-  }
+  },
+  image: {
+    flex: 1.7,
+    height: 40,
+    maxWidth:40,
+    justifyContent: 'center',
+    marginRight: '2%',
+    borderRadius: 20,
+    backgroundColor:'#000'
+  },
+  title: {
+    flex: 3,
+    justifyContent: 'center',
+    fontFamily: 'Nunito',
+    fontSize: 16,
+    color: '#000',
+  },
 });
