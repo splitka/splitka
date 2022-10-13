@@ -82,9 +82,14 @@ class InfoProvider(BaseModel):
     subTypes: List[str]
     type: str
 
+class InfoClientProduct(BaseModel):
+    account: ProductType
+    card: ProductType
+
 class TransactionResponse(BaseModel):
     actions: Actions
-    clientProduct: List[ProductType]
+    # clientProduct: List[ProductType]
+    clientProduct: InfoClientProduct
     commissionSum: InfoSum
     createdAt: str
     description: str
