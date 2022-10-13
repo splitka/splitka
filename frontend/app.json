@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.bulatkod.Splitka_native"
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -1,24 +1,26 @@
-import { SafeAreaView, StyleSheet, View} from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import { NavigationProp } from "@react-navigation/native";
 import LogoWithText from '../components/LogoWithText'
 import FlowButton from '../components/FlowButton';
 import React from 'react';
 
 interface RouterProps {
+    route: any
     navigation: NavigationProp<any, any>;
   }
 
-export default function Update({ navigation }: RouterProps) {
-    return (
-        <SafeAreaView style={styles.container}>
-        <View style={styles.logo}>
-          <LogoWithText/>
-        </View>
-        <View style={styles.button}>
-          <FlowButton title="Обновить" onPress={()=>{navigation.navigate("Payments")}}/>
-        </View>
-      </SafeAreaView>
-    );
+export default function Update({route, navigation }: RouterProps) {
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.logo}>
+        <LogoWithText/>
+      </View>
+      {/* <Text>{route.initialParams.access_token}</Text> */}
+      <View style={styles.button}>
+        <FlowButton title="Обновить" onPress={()=>{navigation.navigate("Payments")}}/>
+      </View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({

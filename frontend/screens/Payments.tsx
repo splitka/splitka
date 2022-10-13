@@ -4,7 +4,8 @@ import LogoWithText from '../components/LogoWithText'
 import React from 'react';
 
 interface RouterProps {
-    navigation: NavigationProp<any, any>;
+  route: any;
+  navigation: NavigationProp<any, any>;
 }
 
 
@@ -48,7 +49,7 @@ const Item = ({item, onPress}) => {
     )
   };
 
-export default function Payments({ navigation }: RouterProps) {
+export default function Payments({route, navigation }: RouterProps) {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.logo}>

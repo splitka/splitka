@@ -7,9 +7,10 @@ import UserSplitSum from './UserSplitSum';
 
 const Stack = createNativeStackNavigator();
 
-export default function Splitka() {
+export default function Splitka({route}: any) {
     return (
-      <Stack.Navigator initialRouteName="Update" 
+      <Stack.Navigator 
+      initialRouteName={"Update"} 
       screenOptions={{
         headerShown: false,
         contentStyle: {

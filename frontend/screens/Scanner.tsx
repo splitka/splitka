@@ -1,7 +1,6 @@
-import { SafeAreaView, StyleSheet, View} from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import { NavigationProp } from "@react-navigation/native";
 import LogoWithText from '../components/LogoWithText'
-import FlowButton from '../components/FlowButton';
 import React from 'react';
 
 interface RouterProps {
@@ -9,16 +8,16 @@ interface RouterProps {
   }
 
 export default function Update({ navigation }: RouterProps) {
-    return (
-        <SafeAreaView style={styles.container}>
-        <View style={styles.logo}>
-          <LogoWithText/>
-        </View>
-        <View style={styles.button}>
-          <FlowButton title="Обновить" onPress={()=>{navigation.navigate("Payments")}}/>
-        </View>
-      </SafeAreaView>
-    );
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.logo}>
+        <LogoWithText/>
+      </View>
+      <View style={styles.scanner}>
+        <Text>Сканер</Text>
+      </View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
   },
-  button: {
+  scanner: {
     flex: 8,
     justifyContent: 'center',
     fontFamily: 'Nunito-Bold'

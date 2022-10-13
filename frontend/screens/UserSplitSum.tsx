@@ -55,7 +55,7 @@ type User = {
     isUse: boolean,
 };
 
-const Item = ({item, onPress}) => {
+const Item = ({item, onPress}: any) => {
     const [number, onChangeNumber] = React.useState(item.totalSum.toString());
 
     return (
@@ -86,7 +86,7 @@ export default function UserSplitSum({ route, navigation}: RouterProps) {
         setUsers([...users.slice(0, index), {...users[index], isUse: !users[index].isUse}, ...users.slice(index + 1)]);
     };
     function list() {
-        const str = [];
+        const str: string[] = [];
         users.forEach(item => item.isUse?str.push(item.title + ' ' + item.totalSum):{})
         return str;
     };
