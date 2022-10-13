@@ -29,7 +29,7 @@ const DATA = [
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28bq',
         title: 'Кофейня "Шоколадница"',
         totalSum: '2000',
-      },
+    },
 ];
 
 const Item = ({item, onPress}: any) => {

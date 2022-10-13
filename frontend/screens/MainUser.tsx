@@ -1,6 +1,6 @@
-import {ActivityIndicator, Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Splitka from './Splitka';
 import Profile from './Profile';
@@ -10,11 +10,11 @@ const Tab = createBottomTabNavigator();
 
 function MainUser() {
   const [isLoading, setLoading] = React.useState(true);
-  const [data, setData] = React.useState("");
+  const [data, setData] = React.useState("123");
 
   const getAccessToken = async () => {
     try {
-      const response = await fetch('http://splitka-backend.transcendent.app:82/token', {
+      const response = await fetch('https://splitka-backend.transcendent.app/token', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -30,9 +30,8 @@ function MainUser() {
       setLoading(false);
     }
   };
-  useEffect(() => {getAccessToken();}, []);
+  //React.useEffect(() => {getAccessToken();});
   return (
-    isLoading?(<View style={{justifyContent:'center'}}><ActivityIndicator size={'large'}/></View>):(
       <Tab.Navigator
         initialRouteName={"Splitka"}
         screenOptions={({ route }: any) => ({
@@ -55,7 +54,6 @@ function MainUser() {
         <Tab.Screen name={"Splitka"} component={Splitka} initialParams={{access_token: data}}/>
         <Tab.Screen name={"Профиль"} component={Profile}/>
       </Tab.Navigator>
-    )
   );
 }
 

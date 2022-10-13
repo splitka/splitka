@@ -17,7 +17,7 @@ export default function Splitka({route}: any) {
           backgroundColor: '#FFF'
         }
       }}>
-        <Stack.Screen name="Update" component={Update} />
+        <Stack.Screen name="Update" component={Update}  initialParams={{access_token: route.params.access_token}}/>
         <Stack.Screen name="Payments" component={Payments} />
         <Stack.Screen name="UserSplitSum" component={UserSplitSum} />
       </Stack.Navigator>
