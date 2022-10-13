@@ -24,5 +24,5 @@ async def login(credentials: HTTPBasicCredentials = Depends(security)):
     async with session.post(url_TOKEN, headers=headers, data=payload) as resp:
       response = await resp.json()
 
-  access_token = response["access_token"]
-  return access_token
+  # access_token = response["access_token"]
+  return response
