@@ -22,7 +22,7 @@ export default function SplitkaLogin({ route, navigation }: RouterProps) {
   const toggleBottomNavigationView = () => {
     //Toggling the visibility state of the bottom sheet
     setBottomVisible(!bottomVisible);
-    if (bottomVisible && typeOfModal == "SUCCESS") { navigation.navigate("Update") }
+    if (bottomVisible && typeOfModal == "SUCCESS") { navigation.navigate("MainUser") }
   };
 
   const dimensions = Dimensions.get('window');

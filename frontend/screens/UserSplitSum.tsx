@@ -9,36 +9,42 @@ interface RouterProps {
     navigation: NavigationProp<any, any>,
 }
 
+require('../img/imageuser/Artem.png')
 const DATA = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'Артемий Звонарев',
       totalSum: '0',
       isUse: true,
+      img: require('../img/imageuser/Artem.png')
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91a1f63',
       title: 'Захар Назаров',
       totalSum: '0',
       isUse: true,
+      img: require('../img/imageuser/Zahar.png')
     },
     {
         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f1',
         title: 'Алексей',
         totalSum: '0',
         isUse: true,
+        img: require('../img/imageuser/Alex.png')
     },
     {
         id: '3ac68afc-c605-48d3-a4f8-fbd91a1f1',
         title: 'Денис',
         totalSum: '0',
         isUse: true,
+        img: require('../img/imageuser/Denis.png')
     },
     {
         id: '3ac68afc-c605-48d3-a4f8-fsd91a1f1',
         title: 'Булат Ефремов',
         totalSum: '0',
         isUse: true,
+        img: require('../img/imageuser/Bulat.png')
     },
 ];
 
@@ -51,16 +57,10 @@ type User = {
 
 const Item = ({item, onPress}: any) => {
     const [number, onChangeNumber] = React.useState(item.totalSum.toString());
-    function RandomImage(){
-      const rnd = Math.random()
-      return rnd < 1/5?require('../img/imageuser/Artem.png'):
-             rnd < 2/5?require('../img/imageuser/Zahar.png'):
-             rnd < 3/5?require('../img/imageuser/Denis.png'):
-             rnd < 4/5?require('../img/imageuser/Alex.png'):require('../img/imageuser/Bulat.png');
-    };
+
     return (
     <View style={styles.item}>
-        <Image source={RandomImage()} style={styles.image}/>
+        <Image source={item.img} style={styles.image}/>
         <Text style={styles.title}>{item.title}</Text>
         <TextInput 
             style={styles.textInput}

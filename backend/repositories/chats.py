@@ -15,8 +15,12 @@ class ChatRepository(BaseRepository):
         query = chats.insert().values(**values)
         return await self.database.execute(query) 
     
-    async def get_all(self, chat_id: int = Path(lt=0)):
+    async def get_all_users_id(self, chat_id: int = Path(lt=0)):
         query = chats.select().filter_by(chat_id=chat_id)
+        return await self.database.fetch_all(query=query)
+
+    async def get_all_chats_id(self, user_id: int = 0):
+        query = chats.select().filter_by(user_id=user_id)
         return await self.database.fetch_all(query=query)
         
     async def update(self):
