@@ -46,18 +46,13 @@ export default function SplitkaLogin({ route, navigation }: RouterProps) {
       <View>
         <View style={{paddingLeft: "6.5%"}}>
           <Text style={{fontFamily: 'Nunito-Bold', fontSize: 28}}>Войдите через OpenID</Text>
-          <Text style={{fontFamily: 'Nunito', paddingBottom: 20, fontSize: 16}}>и начните работу с Splitka</Text>
+          <Text style={{fontFamily: 'Nunito', paddingBottom: 100, fontSize: 16}}>и начните работу с Splitka</Text>
         </View>
         <View style={{paddingBottom: '5%', alignItems: 'center'}}>
           <TouchableOpacity style={styles.enterVTBButton} onPress={() => navigation.navigate('VTBLogin')} >
               <Text style={styles.enterVTBButtonText}>Вход VTB Open ID</Text>
             </TouchableOpacity>
           </View>
-        <View style={{alignItems: 'center'}}>
-          <TouchableOpacity style={styles.enterVKIDButton} onPress={() => {setTypeOfModal('VK_A'); setBottomVisible(!bottomVisible);}} >
-            <Text style={styles.enterVKIDText}>Вход VK ID</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     )
   }
@@ -111,7 +106,8 @@ const styles = StyleSheet.create({
     aspectRatio: 7,
     borderRadius: 12,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    maxWidth: 700
   },
   enterVTBButtonText: {
     color: '#FFF',
